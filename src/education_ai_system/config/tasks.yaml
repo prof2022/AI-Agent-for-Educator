@@ -1,0 +1,107 @@
+#tasks.yaml
+
+context_retrieval_task:
+  description: >
+    Retrieve and compile relevant metadata and context from the Pinecone database for the specified {subject}, {grade_level}, and {topic}.
+  expected_output: >
+    A comprehensive JSON document with metadata and contextual information relevant to {subject}, {grade_level}, and {topic} that will guide the other agents.
+
+lesson_plan_task:
+  description: >
+    Conduct a comprehensive analysis of the provided educational data for the subject, grade level, and topic specified by the user. Based on this analysis, generate a structured and well-organized lesson plan tailored to meet Nigerian academic standards and engage students effectively.
+
+    The lesson plan should follow these rules:
+    - Align strictly with the Nigerian curriculum standards and learning outcomes for the specified {subject}, {grade_level}, and {topic}.
+    - Include specific details such as teaching methods, classroom setup, learning objectives, activities, and differentiated learning strategies to support diverse learners.
+    - Ensure the lesson is engaging, culturally relevant, and designed to optimize student learning and retention.
+    - Avoid using vague or general lesson content; all content must be clearly specified and actionable.
+  
+    The lesson plan should be created in the following structure:
+    - Teacher's Name
+    - Date and Duration
+    - Grade Level and Class Size
+    - Curriculum Standards and Syllabus
+    - Topic and Keywords
+    - Learning Objectives (differentiated objectives for All, Most, and Some students)
+    - Key Terms to be introduced
+    - Resources Required (including any multimedia or hands-on materials)
+    - Detailed Lesson Activities (e.g., Starter activity, main activities, and plenary discussion)
+    - Success Criteria
+    - Homework/Independent Study
+
+  expected_output: >
+    A structured lesson plan document that adheres to Nigerian curriculum standards. Format it as follows:
+
+    - **Title**: Lesson Plan - {subject}, {grade_level}
+    - **Teacher**:
+    - **Date**: 
+    - **Duration**: 
+    - **Grade Level**: {grade_level}
+    - **Curriculum**: Nigerian curriculum aligned with national standards
+    - **Learning Objectives**: List differentiated objectives, e.g., All will, Most will, Some will
+    - **Keywords**: Include key terms relevant to {topic}
+    - **Resources**: List resources, including textbooks, multimedia, or hands-on materials.
+    - **Lesson Activities**:
+      - **Starter Activity**: e.g., Video, introduction questions
+      - **Main Activities**: e.g., discussion, group work, practical activities
+      - **Plenary**: Wrap-up activity or reflection
+    - **Homework**: Independent study or practice assignments
+
+scheme_of_work_task:
+  description: >
+    Create a detailed scheme of work that provides an organized, term-based overview of topics to be covered for the given {subject}, {grade_level}, and {topic}. This scheme of work should align with Nigerian academic standards and offer a clear structure for weekly objectives.
+
+    Include the following components in the scheme of work:
+    - Weekly breakdown of topics and subtopics, following the curriculum syllabus and highlighting key themes to cover.
+    - Ensure the scheme is comprehensive, organized by week, and provides teachers with a roadmap for instruction over the term.
+    - Incorporate half-term and full-term assessments.
+    - Avoid generalizations; each week's topic should be specific, measurable, and relevant to {subject}, {topic}, and {grade_level}.
+
+  expected_output: >
+    A table outlining the scheme of work structured as follows:
+
+    - **Teacher's Name**:
+    - **Subject**: {subject}
+    - **Topic**: {topic}
+    - **Grade Level**: {grade_level}
+    - **Term and Session**: e.g., First Term, 2024/2025
+
+    **Scheme Table**:
+    | WEEK | MAIN TOPIC | SUB-TOPICS/KEY THEMES |
+    |------|------------|-----------------------|
+    | 1    | Nigeria's Location | Geographic position, boundaries, and political divisions |
+    | 2    | Physical Geography | Relief, drainage, and climatic zones |
+    | ...  | Continue weekly breakdown | Cover topics relevant to the syllabus |
+    | 6    | Mid-Term Assessment | Conduct a formative assessment on covered topics |
+    | 12   | Full-Term Assessment | Summative assessment and review of term |
+
+lesson_notes_task:
+  description: >
+    Based on the provided lesson plan and scheme of work from the previous agents, develop comprehensive lesson notes for the specified {subject}, {grade_level}, and {topic}. The lesson notes should be detailed, culturally relevant, and structured to support the entire term's (week 1 to week 12) lessons.
+
+    Follow these guidelines:
+    - Provide detailed content for each subtopic, aligning with Nigerian academic standards.
+    - Break down each weekly topic into specific subtopics for clarity and focus.
+    - Include teaching points, relevant examples, and discussion prompts that are relatable to Nigerian students.
+    - Ensure the notes cover all necessary content for effective delivery and engagement in the classroom.
+    - Include class exercises and assessments that measure students' understanding of each topic.
+
+  expected_output: >
+    A structured lesson note document for teachers. The format should follow this structure:
+
+    - **Teacher's Name**:
+    - **Subject**: {subject}
+    - **Grade Level**: {grade_level}
+    - **Term**: 
+    - **Topic**: {topic}
+    - **Weekly Sub-Topics**: List subtopics for each week
+
+    **Lesson Notes Format**:
+    - **Weekly Content Breakdown**:
+      - Week 1: Introduction to {topic} -
+      - Week 2: Expand on
+      - Continue for each week of the term
+    - **Class Exercises**:
+      - Include 2-3 questions or practical exercises to reinforce learning.
+    - **Homework/Independent Work**:
+      - Assign tasks for home study related to {topic}.
