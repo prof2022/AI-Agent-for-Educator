@@ -1,114 +1,111 @@
 # Curriculum Builder AI System
 
-This project is an AI-powered curriculum builder designed to assist educators in generating schemes of work, lesson plans, and lesson notes based on Nigerian academic standards. The system leverages machine learning and natural language processing tools, such as Pinecone for vector similarity search and Exa API for contextual web searches, to retrieve relevant educational materials and metadata, improving the content generation process. This tool is especially useful for creating structured and culturally relevant lesson materials tailored to specific subjects, grade levels, and topics.
-
----
-
-## Table of Contents
-- [Features](#features)
-- [Project Structure](#project-structure)
-- [Installation](#installation)
-  - [Prerequisites](#prerequisites)
-  - [Setup](#setup)
-    - [Windows and Mac OS](#windows-and-mac-os)
-- [Usage](#usage)
-  - [Run the Main Script](#run-the-main-script)
-  - [Converting Logs to Word Documents](#converting-logs-to-word-documents)
-- [Troubleshooting](#troubleshooting)
-- [Environment Variables](#environment-variables)
-
----
+## Overview
+The **Curriculum Builder AI System** is an AI-powered educational tool designed to assist educators in generating structured schemes of work, lesson plans, and lesson notes based on **Nigerian academic standards**. This system leverages **machine learning** and **natural language processing (NLP)** to ensure content is relevant, well-structured, and aligned with curriculum requirements.
 
 ## Features
+### AI-Driven Curriculum Development
+- **Scheme of Work Generation**: Creates structured outlines for academic terms and subjects.
+- **Lesson Plan Creation**: Develops detailed lesson plans based on syllabus requirements.
+- **Lesson Notes Generation**: Produces well-detailed lesson notes for effective teaching.
 
-- **Automated Curriculum Generation:** Automatically generates schemes of work, lesson plans, and lesson notes based on user inputs.
-- **Pinecone Integration:** Retrieves relevant context and metadata from a Pinecone vector database.
-- **Exa API Integration:** Contextually fetches relevant information from the web to enrich lesson content.
-- **Export to Word:** Converts generated `.md` log files into Word documents for easy download and access.
+### Intelligent Content Retrieval
+- **Pinecone for Vector Search**: Efficiently retrieves relevant academic materials using vector similarity search.
+- **Exa API for Web Search**: Fetches contextual web data to supplement generated content with real-world examples.
+- **Metadata Extraction**: Gathers additional insights to enhance lesson relevance and engagement.
 
----
+### Customization and Localization
+- **Tailored for Nigerian Curriculum**: Ensures alignment with Nigerian **Ministry of Education** standards.
+- **Subject & Grade-Level Adaptability**: Generates materials for different subjects and educational levels.
+- **Cultural Relevance**: Incorporates local examples and contexts for better student comprehension.
 
-## Project Structure
-```bash
-├── src
-│   └── education_ai_system
-│       ├── crew.py                   # Defines the crew and tasks for the curriculum generation agents
-│       ├── main.py                   # Main script to run the curriculum generation process
-│       ├── config                    # YAML configuration files for agents and tasks
-│       │   ├── agents.yaml           # Agent definitions (roles, goals, backstories)
-│       │   └── tasks.yaml            # Task definitions (descriptions, expected outputs)
-│       ├── tools                     # Custom tool integrations (Pinecone, Exa)
-│       │   └── pinecone_exa_tools.py # Pinecone and Exa tool classes for data retrieval
-│       ├── data_processing           # Data processing and chunking utilities
-│       │   ├── pdf_extractor.py      # PDF text and table extraction
-│       │   └── text_chunker.py       # Text chunking functionality
-│       └── utils                     # Utility functions (e.g., document conversion)
-├── logs                              # Contains generated markdown logs
-├── genai_output                      # Contains converted Word documents from logs
-└── README.md                         # Project documentation
-
-```
+## Technologies Used
+- **Machine Learning & NLP**: Enhances content generation and structuring.
+- **Pinecone**: Provides vector similarity search for optimized data retrieval.
+- **Exa API**: Enables real-time web search for supplementary academic content.
+- **Python**: Core programming language for development.
+- **dotenv**: Manages environment variables securely.
 
 ## Installation
 ### Prerequisites
-- Python 3.10 or higher
-- Poetry (for dependency management)
-- Access to Pinecone and Exa API accounts
+1. Python 3.8+
+2. `pip` (Python package manager)
+3. API keys for Pinecone and Exa API
 
-### Setup
-**Windows and Mac OS**
-1. **Clone the Repository:**
-```bash
-git clone https://github.com/yourusername/curriculum_builder.git
-cd curriculum_builder
-```
-2. **Install Python Dependencies:**
-Ensure Poetry is installed. If not, you can install it with:
-```bash
-pip install poetry
-```
-3. **Set Up Environment Variables:**
-Create a .env file in the root directory with the following variables:
-```bash
-PINECONE_API_KEY=your_pinecone_api_key
-PINECONE_INDEX_NAME=your_pinecone_index_name
-EXASEARCH_API_KEY=your_exa_api_key
-OPENAI_API_KEY=your_openai_api_key
-```
-4. **Install Dependencies:**
-Use Poetry to install project dependencies:
-```bash
-poetry install
-```
-5. **Activate Virtual Environment:**
-```bash
-poetry shell
-```
----
+### Steps
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-repo/curriculum-builder-ai.git
+   cd curriculum-builder-ai
+   ```
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Set up environment variables:
+   - Create a `.env` file in the root directory.
+   - Add the following variables:
+     ```env
+     PINECONE_API_KEY=your_pinecone_api_key
+     EXA_API_KEY=your_exa_api_key
+     ```
+4. Run the project:
+   ```bash
+   python main.py
+   ```
+
 ## Usage
-### Run the Main Script
-The main script main.py initiates the curriculum generation process by executing the configured agents and tasks.
-```bash
-python src/education_ai_system/main.py
-```
-### Converting Logs to Word Documents
-Use convert_logs_to_docx.py to convert .md logs into .docx files.
-```bash
-python src/education_ai_system/convert_logs_to_docx.py
-```
----
+### Example Commands
+1. **Generate a Scheme of Work**:
+   ```text
+   Create a scheme of work for Junior Secondary School Mathematics, Term 1.
+   ```
+2. **Generate a Lesson Plan**:
+   ```text
+   Generate a lesson plan for Basic Science, Topic: Photosynthesis, Grade: Primary 6.
+   ```
+3. **Create Lesson Notes**:
+   ```text
+   Provide lesson notes on "The Water Cycle" for Senior Secondary School Geography.
+   ```
 
-## Troubleshooting
-- **Pinecone Initialization Issues:** Ensure the Pinecone index name is correct and accessible.
-- **Tokenizers Parallelism Warning:** Set TOKENIZERS_PARALLELISM=false in your environment variables.
----
-
-## Environment Variables
-Add the following keys to the .env file:
-```bash
-PINECONE_API_KEY=your_pinecone_api_key
-PINECONE_INDEX_NAME=your_pinecone_index_name
-EXASEARCH_API_KEY=your_exa_api_key
-OPENAI_API_KEY=your_openai_api_key
+## File Structure
+```
+.
+├── main.py                        # Entry point for the application
+├── src/
+│   ├── curriculum_builder/
+│   │   ├── main_system.py          # Multi-agent system coordination
+│   │   ├── modules/
+│   │   │   ├── scheme_generator.py
+│   │   │   ├── lesson_plan_generator.py
+│   │   │   ├── lesson_notes_generator.py
+│   │   │   ├── content_retrieval.py
+│   │   │   └── metadata_extractor.py
+│   │   └── config.json              # Configuration settings
+├── tests/
+│   └── test_modules.py              # Unit tests for modules
+├── requirements.txt                 # Python dependencies
+├── .env                             # Environment variables
+└── README.md                        # Project documentation
 ```
 
+## Testing
+Run unit tests to validate functionality:
+```bash
+python -m unittest discover tests/
+```
+
+## Contributing
+Contributions are welcome! Please follow these steps:
+1. Fork the repository.
+2. Create a new branch for your feature/fix.
+3. Submit a pull request with a clear description of changes.
+
+## License
+This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+## Future Enhancements
+- **Integration with LMS**: Connect the system with learning management platforms.
+- **Multi-language Support**: Expand capabilities for regional languages.
+- **AI-Powered Assessment Generator**: Generate quizzes and tests based on generated content.
